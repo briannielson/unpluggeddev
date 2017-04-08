@@ -1,0 +1,78 @@
+<!--
+
+2/17/2017
+  Image buttons do not have Content discriptions yet, so I have the warning set to be repressed.
+  I just guessed as best I could for sapcing since I wasn't sure how big everything needed to be,
+  also the logo image width is set to 0 so it will just fill the remaining space of the layout when
+  an image is placed into it / it is rendered.
+     -->
+
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+    android:layout_width="wrap_content"
+        android:layout_height="35dp">
+
+        <ImageView
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/cast_expanded_controller_bg_gradient_light"
+            android:id="@+id/imageView3"
+            android:layout_weight="1"
+            tools:ignore="ContentDescription"
+            android:layout_width="0dp" />
+
+        <Spinner
+            android:layout_width="235dp"
+            android:layout_height="match_parent"
+            android:id="@+id/spinner" />
+
+    </LinearLayout>
+
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="384dp"
+        android:layout_height="427dp"
+         />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:weightSum="1">
+
+        <ImageButton
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/cast_abc_scrubber_control_to_pressed_mtrl_000"
+            android:id="@+id/imageButton6"
+            android:layout_weight="1"
+            android:layout_width="120dp"
+            tools:ignore="ContentDescription" />
+
+        <ImageButton
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/cast_abc_scrubber_control_to_pressed_mtrl_000"
+            android:id="@+id/imageButton3"
+            android:layout_width="120dp"
+            android:contentDescription=""
+            tools:ignore="ContentDescription" />
+
+        <ImageButton
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/cast_abc_scrubber_control_to_pressed_mtrl_000"
+            android:id="@+id/imageButton2"
+            android:layout_weight="0.20"
+            android:layout_width="120dp"
+            android:contentDescription=""
+            tools:ignore="ContentDescription" />
+
+    </LinearLayout>
+
+</LinearLayout>
