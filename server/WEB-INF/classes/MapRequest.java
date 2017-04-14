@@ -3,11 +3,9 @@ package UD_mapRequest;
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
+import javax.json.*;
  
-public class HelloServlet extends HttpServlet {
-
-
-
+public class MapRequest extends HttpServlet {
    @Override
    public void doGet(HttpServletRequest request, HttpServletResponse response)
          throws IOException, ServletException {
@@ -21,9 +19,9 @@ public class HelloServlet extends HttpServlet {
       String[] northeastarr = new String[2];
       String[] southwestarr = new String[2];
       String[] locationarr = new String[2];
-      Double[] northeastdbl = new Double[2];
-      Double[] southwestdbl = new Double[2];
-      Double[] locationdbl = new Double[2];
+      double[] northeastdbl = new double[2];
+      double[] southwestdbl = new double[2];
+      double[] locationdbl = new double[2];
 
       if (northeast.contains(",") && southwest.contains(",") && location.contains(",")) {
          northeastarr = northeast.split(",");
@@ -49,7 +47,7 @@ public class HelloServlet extends HttpServlet {
  
       // Write the response message, in an HTML page
       try {
-         out.print(j)
+         out.print(j);
          out.flush();
       } finally {
          out.close();  // Always close the output writer

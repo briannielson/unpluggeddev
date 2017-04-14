@@ -32,7 +32,6 @@ public class SQLWrapper {
 		}
 		else if (northeast.length != 2 || southwest.length != 2) {
                         System.err.println("Invalid array sent for scrnSize");
-                        System.err.println("Expected array of length 2, got length " + scrnSize.length);
                         return;
                 }
 
@@ -64,7 +63,7 @@ public class SQLWrapper {
 			while (rs.next()) {
 				arrBuilder.add(Json.createObjectBuilder().
 					add("id", rs.getInt("id")).
-					add("date", rs.getDate("date")).
+					add("date", rs.getDate("date").toString()).
 					add("venue", rs.getString("venue")).
 					add("artist", rs.getString("artist")).
 					add("latitude", rs.getFloat("latitude")).
