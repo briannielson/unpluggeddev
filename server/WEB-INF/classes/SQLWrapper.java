@@ -42,7 +42,7 @@ public class SQLWrapper {
 		return;
 	}
 
-	public JsonObject runQuery() {
+	public JsonArray runQuery() {
 		JsonArrayBuilder arrBuilder = Json.createArrayBuilder();
 		Connection conn = null;
 		Statement stmt = null;

@@ -11,7 +11,7 @@ public class MapRequest extends HttpServlet {
          throws IOException, ServletException {
 
       SQLWrapper r = new SQLWrapper();
-      JsonObject j = new JsonObject();
+      JsonArray j = new JsonArray();
 
       String northeast = request.getParameter("northeast");
       String southwest = request.getParameter("southwest");
