@@ -86,8 +86,8 @@ public class SQLWrapper {
 	}
 
 	public String getQuery() {
-		return "select * from performances left join venues on performances.venue_id = venues.id left join artists on performances.artist_id = artists.id where latitude between '" 
+		return "select * from performances left join venues on performances.venue_id = venues.id left join artists on performances.artist_id = artists.id;";/* where latitude between '" 
 			+ Math.min(upperleftbd[0], lowerrightbd[0]) + "' and '" + Math.max(upperleftbd[0], lowerrightbd[0])
-			+ "' and longitude between '" + Math.min(upperleftbd[1], lowerrightbd[1]) + "' and '" + Math.max(upperleftbd[1], lowerrightbd[1]) + "';";
+			+ "' and longitude between '" + Math.min(upperleftbd[1], lowerrightbd[1]) + "' and '" + Math.max(upperleftbd[1], lowerrightbd[1]) + "';";*/
 	}
 }

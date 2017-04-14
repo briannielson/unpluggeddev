@@ -23,7 +23,7 @@ public class MapRequest extends HttpServlet {
       response.setContentType("application/json");
       PrintWriter out = response.getWriter();
 
-      if (northeast.contains(",") && southwest.contains(",") && location.contains(",")) {
+/*      if (northeast.contains(",") && southwest.contains(",") && location.contains(",")) {
          northeastarr = northeast.split(",");
          southwestarr = southwest.split(",");
          locationarr  = location.split(",");
@@ -36,12 +36,12 @@ public class MapRequest extends HttpServlet {
          locationdbl[1]  = Double.parseDouble(locationarr[1]);
 
          r.setBounds(northeastdbl, southwestdbl, locationdbl);
-	 out.print(r.runQuery().toString());
-      }
+*/	 out.print(r.runQuery().toString());
+/*      }
       else {
 	 out.print("<html><body><p>Hey I need some post data...</p></body></html>");
       }
- 
+ */
       out.close();  // Always close the output writer
    }
 }
