@@ -1,12 +1,11 @@
-package UD_mapRequest;
-
 import java.sql.*;
 import javax.json.*;
+import java.lang.Math.*;
 
 public class SQLWrapper {
 	
 	private String driver = "com.mysql.jdbc.Driver";
-	private String dbUrl = "jdbc:mysql://localhost";
+	private String dbUrl = "jdbc:mysql://localhost:3306/unplugged01";
 	private String user = "root"; // Need to encrypt this info at some point
 	private String pass = "unplugged"; // REALLY need to encrypt this
 	public boolean valid = true;
@@ -48,15 +47,7 @@ public class SQLWrapper {
 		Statement stmt = null;
 		ResultSet rs = null;
 		try {
-		    conn = DriverManager.getConnection(dbUrl + "?user=" + this.user + "&password=" + this.pass);
-		} catch (SQLException ex) {
-		    // handle any errors
-		    System.err.println("SQLException: " + ex.getMessage());
-		    System.err.println("SQLState: " + ex.getSQLState());
-		    System.err.println("VendorError: " + ex.getErrorCode());
-		}
-
-		try {
+		    conn = DriverManager.getConnection(dbUrl,user,this.pass);
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(this.getQuery());
 
@@ -94,9 +85,9 @@ public class SQLWrapper {
 		return arrBuilder.build();
 	}
 
-	private String getQuery() {
-		return "select * from performances left join venues on performances.venue_id = venues.id left join artists on performances.artist_id = artists.id where latitude between " 
-			+ upperleftbd[0] + " and " + lowerrightbd[0]
-			+ " and longitude between " + upperleftbd[1] + " and " + lowerrightbd[1] + ";";
+	public String getQuery() {
+		return "select * from performances left join venues on performances.venue_id = venues.id left join artists on performances.artist_id = artists.id where latitude between '" 
+			+ Math.min(upperleftbd[0], lowerrightbd[0]) + "' and '" + Math.max(upperleftbd[0], lowerrightbd[0])
+			+ "' and longitude between '" + Math.min(upperleftbd[1], lowerrightbd[1]) + "' and '" + Math.max(upperleftbd[1], lowerrightbd[1]) + "';";
 	}
 }

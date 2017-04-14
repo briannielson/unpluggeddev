@@ -1,5 +1,3 @@
-package UD_mapRequest;
-
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -11,7 +9,6 @@ public class MapRequest extends HttpServlet {
          throws IOException, ServletException {
 
       SQLWrapper r = new SQLWrapper();
-      JsonArray j = new JsonArray();
 
       String northeast = request.getParameter("northeast");
       String southwest = request.getParameter("southwest");
@@ -22,6 +19,9 @@ public class MapRequest extends HttpServlet {
       double[] northeastdbl = new double[2];
       double[] southwestdbl = new double[2];
       double[] locationdbl = new double[2];
+
+      response.setContentType("application/json");
+      PrintWriter out = response.getWriter();
 
       if (northeast.contains(",") && southwest.contains(",") && location.contains(",")) {
          northeastarr = northeast.split(",");
@@ -36,21 +36,12 @@ public class MapRequest extends HttpServlet {
          locationdbl[1]  = Double.parseDouble(locationarr[1]);
 
          r.setBounds(northeastdbl, southwestdbl, locationdbl);
-
-         j = r.runQuery();
+	 out.print(r.runQuery().toString());
+      }
+      else {
+	 out.print("<html><body><p>Hey I need some post data...</p></body></html>");
       }
  
-      // Set the response MIME type of the response message
-      response.setContentType("application/json");
-      // Allocate a output writer to write the response message into the network socket
-      PrintWriter out = response.getWriter();
- 
-      // Write the response message, in an HTML page
-      try {
-         out.print(j);
-         out.flush();
-      } finally {
-         out.close();  // Always close the output writer
-      }
+      out.close();  // Always close the output writer
    }
 }
