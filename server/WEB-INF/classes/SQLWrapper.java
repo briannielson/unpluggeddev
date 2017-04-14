@@ -49,7 +49,7 @@ public class SQLWrapper {
 		Statement stmt = null;
 		ResultSet rs = null;
 		try {
-		    conn = DriverManager.getConnection(dbUrl + "?user=" this.user + "&password=" + this.pass);
+		    conn = DriverManager.getConnection(dbUrl + "?user=" + this.user + "&password=" + this.pass);
 		} catch (SQLException ex) {
 		    // handle any errors
 		    System.err.println("SQLException: " + ex.getMessage());
@@ -96,8 +96,8 @@ public class SQLWrapper {
 	}
 
 	private String getQuery() {
-		return "select * from performances left join venues on performances.venue_id = venues.id left join artists on performances.artist_id = artists.id
-			where latitude between " + upperleftbd[0] + " and " + lowerrightbd[0]
+		return "select * from performances left join venues on performances.venue_id = venues.id left join artists on performances.artist_id = artists.id where latitude between " 
+			+ upperleftbd[0] + " and " + lowerrightbd[0]
 			+ " and longitude between " + upperleftbd[1] + " and " + lowerrightbd[1] + ";";
 	}
 }
